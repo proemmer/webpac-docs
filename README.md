@@ -10,6 +10,17 @@ has been changed.
 
 ![System Overview](./images/System.PNG)
 
+
+## running the application
+
+To start webpac, you have to run the command 
+
+![start webpac](./images/start.PNG)
+
+after this the application runs in the command
+
+![running webpac](./images/running.PNG)
+
 ## Absolute (address based access)
 
 The first method to read and write data is by its absolute address.
@@ -65,10 +76,17 @@ The second access method is by its symbolic name. For this, you have to create a
 data-mapping file. The structure of this file is an C# class with properties. 
 To create such a file very easy, you could use a tool from 
 [insite-gmbh](http://www.insite-gmbh.de) called AWLConverter. 
-This tool extracts the data from the SimaticManager and convert it 
+This tool extracts the data from the Simatic Manager and convert it 
 to the representation we use. 
 
 ![System Overview](./images/ToolChain.PNG)
+
+##web api
+
+To visualize and test the web api we add swagger support.
+
+![System Overview](./images/Swagger.PNG)
+
 
 ##Used Libraries
 
