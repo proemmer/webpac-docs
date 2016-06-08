@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Webpac-documents by proemmer</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/proemmer/webpac-documents">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/proemmer/webpac-documents/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/proemmer/webpac-documents/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Webpac-documents</h1>
+          <p>documentation of webpac</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/proemmer">proemmer</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="webpac-documentation" class="anchor" href="#webpac-documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>webpac Documentation</h1>
+
+<p>By <a href="https://github.com/proemmer">Benjamin Proemmer</a></p>
+
+<p>Webpac is a software which offers an web-interface for accessing Step7 plc's. 
+This interface gave you the opportunity to read from the pc and also write to it.
+Furthermore it supports the functionality to subscribe to get informed if some data 
+have been changed.</p>
+
+<p><img src="https://github.com/proemmer/webpac-documents/blob/master/images/System.PNG" alt="System Overview"></p>
+
+<h2>
+<a id="absolute-address-based-access" class="anchor" href="#absolute-address-based-access" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Absolute (Address based access)</h2>
+
+<p>The first method to read and write data is by its absolute address.
+To address a value in the plc you have to specify the area and the type.</p>
+
+<h3>
+<a id="area" class="anchor" href="#area" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Area</h3>
+
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DB[Number]</td>
+<td>datablock</td>
+</tr>
+<tr>
+<td>FB</td>
+<td>Flags</td>
+</tr>
+<tr>
+<td>IB</td>
+<td>Input</td>
+</tr>
+<tr>
+<td>OB</td>
+<td>Output</td>
+</tr>
+<tr>
+<td>TB</td>
+<td>Timer</td>
+</tr>
+<tr>
+<td>CB</td>
+<td>Counter</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="address" class="anchor" href="#address" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Address</h3>
+
+<p>[Code][Offset][_Length]</p>
+
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BIT</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>BYTE</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Char</td>
+</tr>
+<tr>
+<td>CHAR</td>
+<td>Char</td>
+</tr>
+<tr>
+<td>DATE</td>
+<td>Date</td>
+</tr>
+<tr>
+<td>DT</td>
+<td>DateTime</td>
+</tr>
+<tr>
+<td>DATETIME</td>
+<td>DateTime</td>
+</tr>
+<tr>
+<td>DI</td>
+<td>Double Integer</td>
+</tr>
+<tr>
+<td>DINT</td>
+<td>Double Integer</td>
+</tr>
+<tr>
+<td>I</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>INT</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>R</td>
+<td>Real</td>
+</tr>
+<tr>
+<td>REAL</td>
+<td>Real</td>
+</tr>
+<tr>
+<td>TIMEBCD</td>
+<td>S7 Time</td>
+</tr>
+<tr>
+<td>S</td>
+<td>String</td>
+</tr>
+<tr>
+<td>STRING</td>
+<td>String</td>
+</tr>
+<tr>
+<td>T</td>
+<td>Time</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>Time</td>
+</tr>
+<tr>
+<td>TOD</td>
+<td>TimeOf Day</td>
+</tr>
+<tr>
+<td>W</td>
+<td>Word</td>
+</tr>
+<tr>
+<td>WORD</td>
+<td>Word</td>
+</tr>
+<tr>
+<td>CT</td>
+<td>Counter</td>
+</tr>
+<tr>
+<td>COUNT</td>
+<td>Counter</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="symbolic-symbol-based-access" class="anchor" href="#symbolic-symbol-based-access" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Symbolic (Symbol based access)</h2>
+
+<p>The second access method is by its symbolic name. For this, you have to create a 
+data-mapping file. The structure of this file is an C# class with properties. 
+To create such a file very easy, you could use a tool from 
+<a href="http://www.insite-gmbh.de">insite-gmbh</a> called AWLConverter. 
+This tool extracts the data from the SimaticManager and convert it 
+to the representation we use. </p>
+
+<p><img src="https://github.com/proemmer/webpac-documents/blob/master/images/ToolChain.PNG" alt="System Overview"></p>
+
+<h2>
+<a id="used-libraries" class="anchor" href="#used-libraries" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Used Libraries</h2>
+
+<p>To get the plc access we use two libraries.</p>
+
+<h3>
+<a id="dacs7" class="anchor" href="#dacs7" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dacs7</h3>
+
+<p><a href="http://proemmer.github.io/dacs7/">DacS7</a> is a low level component which handles the communication to the 
+plc and is available as a <a href="https://www.nuget.org/packages/Dacs7/">nuget</a> package.</p>
+
+<h3>
+<a id="papper" class="anchor" href="#papper" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Papper</h3>
+
+<p><a href="http://proemmer.github.io/papper">Papper</a> is a data mapper which maps a c# class to a plc data block.
+This package is also available as a <a href="https://www.nuget.org/packages/Papper/">nuget</a> package.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
