@@ -15,11 +15,11 @@ has been changed.
 
 To start webpac, you have to run the command 
 
-![start webpac](./images/start.PNG)
+![start webpac](./images/Start.PNG)
 
 after this the application runs in the command
 
-![running webpac](./images/running.PNG)
+![running webpac](./images/Running.PNG)
 
 ## Absolute (address based access)
 
