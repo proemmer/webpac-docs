@@ -75,11 +75,11 @@ To get the plc access we use two libraries.
 
 ### Dacs7
 
-[DacS7](https://github.com/dacs7) is a low level component which handles the communication to the 
+[DacS7](http://proemmer.github.io/dacs7/) is a low level component which handles the communication to the 
 plc and is available as a [nuget](https://www.nuget.org/packages/Dacs7/) package.
 
 ###Papper
 
-[Papper](https://github.com/papper) is a data mapper which maps a c# class to a plc data block.
+[Papper](http://proemmer.github.io/papper) is a data mapper which maps a c# class to a plc data block.
 This package is also available as a [nuget](https://www.nuget.org/packages/Papper/) package.
 
