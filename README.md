@@ -1,4 +1,4 @@
-# webpac Documentation
+# webpac-docs
 (web based plc data access)
 
 By [Benjamin Proemmer](https://github.com/proemmer)
