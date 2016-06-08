@@ -7,7 +7,7 @@ This interface gave you the opportunity to read from the pc and also write to it
 Furthermore it supports the functionality to subscribe to get informed if some data 
 have been changed.
 
-![System Overview](https://github.com/proemmer/webpac-docs/blob/master/images/System.PNG)
+![System Overview](https://github.com/proemmer/webpac-docsimages/System.PNG)
 
 ## Absolute (Address based access)
 
@@ -67,7 +67,7 @@ To create such a file very easy, you could use a tool from
 This tool extracts the data from the SimaticManager and convert it 
 to the representation we use. 
 
-![System Overview](https://github.com/proemmer/webpac-docs/blob/master/images/ToolChain.PNG)
+![System Overview](https://github.com/proemmer/webpac-docs/images/ToolChain.PNG)
 
 ##Used Libraries
 
