@@ -15,7 +15,7 @@ has been changed.
 
 To start webpac, you have to run the command 
 
-![start webpac](./images/Start.PNG)
+![start webpac](./images/start.PNG)
 
 after this the application runs in the command
 
