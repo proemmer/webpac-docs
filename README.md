@@ -1,15 +1,16 @@
 # webpac Documentation
+(web based plc data access)
 
 By [Benjamin Proemmer](https://github.com/proemmer)
 
 Webpac is a software which offers an web-interface for accessing Step7 plc's. 
 This interface gave you the opportunity to read from the pc and also write to it.
 Furthermore it supports the functionality to subscribe to get informed if some data 
-have been changed.
+has been changed.
 
 ![System Overview](./images/System.PNG)
 
-## Absolute (Address based access)
+## Absolute (address based access)
 
 The first method to read and write data is by its absolute address.
 To address a value in the plc you have to specify the area and the type.
@@ -58,7 +59,7 @@ To address a value in the plc you have to specify the area and the type.
 
 
 
-## Symbolic (Symbol based access)
+## Symbolic (symbol based access)
 
 The second access method is by its symbolic name. For this, you have to create a 
 data-mapping file. The structure of this file is an C# class with properties. 
