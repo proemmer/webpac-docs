@@ -13,11 +13,11 @@ has been changed.
 
 ## running the application
 
-To start webpac, you have to run the command 
+To start webpac, you have to run the following command:
 
 ![start webpac](./images/start.PNG)
 
-after this the application runs in the command
+after this the application runs in the command window:
 
 ![running webpac](./images/Running.PNG)
 
