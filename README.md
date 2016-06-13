@@ -3,10 +3,9 @@
 
 By [Benjamin Proemmer](https://github.com/proemmer)
 
-Webpac is a software which offers an web-interface for accessing Step7 plc's. 
-This interface gave you the opportunity to read from the pc and also write to it.
-Furthermore it supports the functionality to subscribe to get informed if some data 
-has been changed.
+Webpac is a software which offers an web-interface for accessing Step7 PLC's. 
+This interface enables you to read and write to/from PLC.
+Furthermore it supports the functionality to subscribe for events if data changes.
 
 ![System Overview](./images/System.PNG)
 
@@ -24,7 +23,7 @@ after this the application runs in the command window:
 ## Absolute (address based access)
 
 The first method to read and write data is by its absolute address.
-To address a value in the plc you have to specify the area and the type.
+To address a value in the PLC you have to specify the area and the type.
 
 ### Area
 | Area | Name  |
@@ -74,31 +73,31 @@ To address a value in the plc you have to specify the area and the type.
 
 The second access method is by its symbolic name. For this, you have to create a 
 data-mapping file. The structure of this file is an C# class with properties. 
-To create such a file very easy, you could use a tool from 
+To create such a file is very easy, you could use a tool from 
 [insite-gmbh](http://www.insite-gmbh.de) called AWLConverter. 
-This tool extracts the data from the Simatic Manager and convert it 
+This tool extracts the data from the Simatic Manager and converts it 
 to the representation we use. 
 
 ![System Overview](./images/ToolChain.PNG)
 
 ##web api
 
-To visualize and test the web api we add swagger support.
+To visualize and test the web api we added swagger support.
 
 ![System Overview](./images/Swagger.PNG)
 
 
 ##Used Libraries
 
-To get the plc access we use two libraries.
+To get the PLC access we use two libraries.
 
 ### Dacs7
 
 [DacS7](http://proemmer.github.io/dacs7/) is a low level component which handles the communication to the 
-plc and is available as a [nuget](https://www.nuget.org/packages/Dacs7/) package.
+PLC and is available as a [nuget](https://www.nuget.org/packages/Dacs7/) package.
 
 ###Papper
 
-[Papper](http://proemmer.github.io/papper) is a data mapper which maps a c# class to a plc data block.
+[Papper](http://proemmer.github.io/papper) is a data mapper which maps a C# class to a PLC data block.
 This package is also available as a [nuget](https://www.nuget.org/packages/Papper/) package.
 
