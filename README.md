@@ -87,17 +87,102 @@ To visualize and test the web api we added swagger support.
 ![System Overview](./images/Swagger.PNG)
 
 
+##Configuration
+
+The configuration file named 'appsettings.json' has the configuration settings for Logging, Plc, RuntimeCompiler and the Authentication.
+
+### Logging
+
+```c#
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Information",
+      "System": "Information",
+      "Microsoft": "Information"
+    }
+  }
+```
+
+### Plc
+
+This section specifies the connection parameter to the PLC.
+
+```c#
+  "Plc": {
+    "ConnectionString": "Data Source=127.0.0.1:102,0,2",
+    "ConnectOnStartup": true,
+    "ReconnectOnConnectionLost": true,
+    "ReconnectIntervall":  5000
+  }
+```
+
+*   *ConnectionString*: Defines the address to the PLC. Syntax: [IP]:[PORT],[RACK],[SLOT]
+*   *ConnectOnStartup*: If this value is *true*, webpac try connecting to PLC at the application start.
+*   *ReconnectOnConnectionLost*: If this value is *true*, webpac tries to reconnect, when PLC connection goes down.
+*   *ConnectReconnectIntervallOnStartup*: This value specifies the connection retry interval.
+
+### RuntimeCompiler
+
+```c#
+  "RuntimeCompiler": {
+    "Location": "C:\\webpac\\data",
+    "Usings": [
+      "System",
+      "Papper.Attributes"
+    ]
+  }
+```
+*   *Location*: This value specifies the Location of the symbolic file (C# class files).
+*   *Usings*: This is an array of usings depending of the class files you want compile.
+
+
+### Authentication
+
+```c#
+  "Auth": {
+    "KeyFile": "C:\\webpac\\data\\sec.key",
+    "TokenValidatenTimeinMinutes": 1440 ,
+    "Users": [
+      {
+        "Type": "ReadOnly",
+        "Username": "ReadOnlyUsername",
+        "Password": "ReadOnlyPassword"
+      },
+      {
+        "Type": "ReadWrite",
+        "Username": "ReadWriteUsername",
+        "Password": "ReadWritePassword"
+      }
+    ]
+  }
+```
+
+*   *KeyFile*: This value specifies the Location of the key file for the authentication token (this file will be created on first start).
+*   *TokenValidatenTimeinMinutes*: This value specifies the validation time of the token.
+*   *Users.Type*: Select the access level for the api calls [Valid parameters are ReadOnly, ReadWrite]
+*   *Users.Username*: Name of the user for sign in.
+*   *Users.Password*: Password for the specified user.
+
+
+
 ##Used Libraries
 
-To get the PLC access we use two libraries.
+To get the PLC access we use two libraries as the following image describe.
+
+![Library communication](./images/webpactoplc.PNG)
+
+###Papper
+
+[Papper](http://proemmer.github.io/papper) is a data mapper which maps a C# class to a PLC data block.
+This package is also available as a [nuget](https://www.nuget.org/packages/Papper/) package.
+
 
 ### Dacs7
 
 [DacS7](http://proemmer.github.io/dacs7/) is a low level component which handles the communication to the 
 PLC and is available as a [nuget](https://www.nuget.org/packages/Dacs7/) package.
 
-###Papper
 
-[Papper](http://proemmer.github.io/papper) is a data mapper which maps a C# class to a PLC data block.
-This package is also available as a [nuget](https://www.nuget.org/packages/Papper/) package.
+
 
