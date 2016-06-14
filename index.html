@@ -45,21 +45,20 @@
 
 <p>By <a href="https://github.com/proemmer">Benjamin Proemmer</a></p>
 
-<p>Webpac is a software which offers an web-interface for accessing Step7 plc's. 
-This interface gave you the opportunity to read from the pc and also write to it.
-Furthermore it supports the functionality to subscribe to get informed if some data 
-has been changed.</p>
+<p>Webpac is a software which offers an web-interface for accessing Step7 PLC's. 
+This interface enables you to read and write to/from PLC.
+Furthermore it supports the functionality to subscribe for events if data changes.</p>
 
 <p><img src="./images/System.PNG" alt="System Overview"></p>
 
 <h2>
 <a id="running-the-application" class="anchor" href="#running-the-application" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>running the application</h2>
 
-<p>To start webpac, you have to run the command </p>
+<p>To start webpac, you have to run the following command:</p>
 
 <p><img src="./images/start.PNG" alt="start webpac"></p>
 
-<p>after this the application runs in the command</p>
+<p>after this the application runs in the command window:</p>
 
 <p><img src="./images/Running.PNG" alt="running webpac"></p>
 
@@ -67,7 +66,7 @@ has been changed.</p>
 <a id="absolute-address-based-access" class="anchor" href="#absolute-address-based-access" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Absolute (address based access)</h2>
 
 <p>The first method to read and write data is by its absolute address.
-To address a value in the plc you have to specify the area and the type.</p>
+To address a value in the PLC you have to specify the area and the type.</p>
 
 <h3>
 <a id="area" class="anchor" href="#area" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Area</h3>
@@ -224,9 +223,9 @@ To address a value in the plc you have to specify the area and the type.</p>
 
 <p>The second access method is by its symbolic name. For this, you have to create a 
 data-mapping file. The structure of this file is an C# class with properties. 
-To create such a file very easy, you could use a tool from 
+To create such a file is very easy, you could use a tool from 
 <a href="http://www.insite-gmbh.de">insite-gmbh</a> called AWLConverter. 
-This tool extracts the data from the Simatic Manager and convert it 
+This tool extracts the data from the Simatic Manager and converts it 
 to the representation we use. </p>
 
 <p><img src="./images/ToolChain.PNG" alt="System Overview"></p>
@@ -234,26 +233,108 @@ to the representation we use. </p>
 <h2>
 <a id="web-api" class="anchor" href="#web-api" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>web api</h2>
 
-<p>To visualize and test the web api we add swagger support.</p>
+<p>To visualize and test the web api we added swagger support.</p>
 
 <p><img src="./images/Swagger.PNG" alt="System Overview"></p>
 
 <h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+
+<p>The configuration file named 'appsettings.json' has the configuration settings for Logging, Plc, RuntimeCompiler and the Authentication.</p>
+
+<h3>
+<a id="logging" class="anchor" href="#logging" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Logging</h3>
+
+<div class="highlight highlight-source-cs"><pre>  <span class="pl-s"><span class="pl-pds">"</span>Logging<span class="pl-pds">"</span></span>: {
+    <span class="pl-s"><span class="pl-pds">"</span>IncludeScopes<span class="pl-pds">"</span></span>: <span class="pl-c1">false</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>LogLevel<span class="pl-pds">"</span></span>: {
+      <span class="pl-s"><span class="pl-pds">"</span>Default<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>Information<span class="pl-pds">"</span></span>,
+      <span class="pl-s"><span class="pl-pds">"</span>System<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>Information<span class="pl-pds">"</span></span>,
+      <span class="pl-s"><span class="pl-pds">"</span>Microsoft<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>Information<span class="pl-pds">"</span></span>
+    }
+  }</pre></div>
+
+<h3>
+<a id="plc" class="anchor" href="#plc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Plc</h3>
+
+<p>This section specifies the connection parameter to the PLC.</p>
+
+<div class="highlight highlight-source-cs"><pre>  <span class="pl-s"><span class="pl-pds">"</span>Plc<span class="pl-pds">"</span></span>: {
+    <span class="pl-s"><span class="pl-pds">"</span>ConnectionString<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>Data Source=127.0.0.1:102,0,2<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>ConnectOnStartup<span class="pl-pds">"</span></span>: <span class="pl-c1">true</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>ReconnectOnConnectionLost<span class="pl-pds">"</span></span>: <span class="pl-c1">true</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>ReconnectIntervall<span class="pl-pds">"</span></span>:  <span class="pl-c1">5000</span>
+  }</pre></div>
+
+<ul>
+<li>  <em>ConnectionString</em>: Defines the address to the PLC. Syntax: [IP]:[PORT],[RACK],[SLOT]</li>
+<li>  <em>ConnectOnStartup</em>: If this value is <em>true</em>, webpac try connecting to PLC at the application start.</li>
+<li>  <em>ReconnectOnConnectionLost</em>: If this value is <em>true</em>, webpac tries to reconnect, when PLC connection goes down.</li>
+<li>  <em>ConnectReconnectIntervallOnStartup</em>: This value specifies the connection retry interval.</li>
+</ul>
+
+<h3>
+<a id="runtimecompiler" class="anchor" href="#runtimecompiler" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RuntimeCompiler</h3>
+
+<div class="highlight highlight-source-cs"><pre>  <span class="pl-s"><span class="pl-pds">"</span>RuntimeCompiler<span class="pl-pds">"</span></span>: {
+    <span class="pl-s"><span class="pl-pds">"</span>Location<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>C:<span class="pl-cce">\\</span>webpac<span class="pl-cce">\\</span>data<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>Usings<span class="pl-pds">"</span></span>: [
+      <span class="pl-s"><span class="pl-pds">"</span>System<span class="pl-pds">"</span></span>,
+      <span class="pl-s"><span class="pl-pds">"</span>Papper.Attributes<span class="pl-pds">"</span></span>
+    ]
+  }</pre></div>
+
+<ul>
+<li>  <em>Location</em>: This value specifies the Location of the symbolic file (C# class files).</li>
+<li>  <em>Usings</em>: This is an array of usings depending of the class files you want compile.</li>
+</ul>
+
+<h3>
+<a id="authentication" class="anchor" href="#authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authentication</h3>
+
+<div class="highlight highlight-source-cs"><pre>  <span class="pl-s"><span class="pl-pds">"</span>Auth<span class="pl-pds">"</span></span>: {
+    <span class="pl-s"><span class="pl-pds">"</span>KeyFile<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>C:<span class="pl-cce">\\</span>webpac<span class="pl-cce">\\</span>data<span class="pl-cce">\\</span>sec.key<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>TokenValidatenTimeinMinutes<span class="pl-pds">"</span></span>: <span class="pl-c1">1440</span> ,
+    <span class="pl-s"><span class="pl-pds">"</span>Users<span class="pl-pds">"</span></span>: [
+      {
+        <span class="pl-s"><span class="pl-pds">"</span>Type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>ReadOnly<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>Username<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>ReadOnlyUsername<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>Password<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>ReadOnlyPassword<span class="pl-pds">"</span></span>
+      },
+      {
+        <span class="pl-s"><span class="pl-pds">"</span>Type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>ReadWrite<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>Username<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>ReadWriteUsername<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>Password<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>ReadWritePassword<span class="pl-pds">"</span></span>
+      }
+    ]
+  }</pre></div>
+
+<ul>
+<li>  <em>KeyFile</em>: This value specifies the Location of the key file for the authentication token (this file will be created on first start).</li>
+<li>  <em>TokenValidatenTimeinMinutes</em>: This value specifies the validation time of the token.</li>
+<li>  <em>Users.Type</em>: Select the access level for the api calls [Valid parameters are ReadOnly, ReadWrite]</li>
+<li>  <em>Users.Username</em>: Name of the user for sign in.</li>
+<li>  <em>Users.Password</em>: Password for the specified user.</li>
+</ul>
+
+<h2>
 <a id="used-libraries" class="anchor" href="#used-libraries" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Used Libraries</h2>
 
-<p>To get the plc access we use two libraries.</p>
+<p>To get the PLC access we use two libraries as the following image describe.</p>
+
+<p><img src="./images/webpactoplc.PNG" alt="Library communication"></p>
+
+<h3>
+<a id="papper" class="anchor" href="#papper" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Papper</h3>
+
+<p><a href="http://proemmer.github.io/papper">Papper</a> is a data mapper which maps a C# class to a PLC data block.
+This package is also available as a <a href="https://www.nuget.org/packages/Papper/">nuget</a> package.</p>
 
 <h3>
 <a id="dacs7" class="anchor" href="#dacs7" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dacs7</h3>
 
 <p><a href="http://proemmer.github.io/dacs7/">DacS7</a> is a low level component which handles the communication to the 
-plc and is available as a <a href="https://www.nuget.org/packages/Dacs7/">nuget</a> package.</p>
-
-<h3>
-<a id="papper" class="anchor" href="#papper" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Papper</h3>
-
-<p><a href="http://proemmer.github.io/papper">Papper</a> is a data mapper which maps a c# class to a plc data block.
-This package is also available as a <a href="https://www.nuget.org/packages/Papper/">nuget</a> package.</p>
+PLC and is available as a <a href="https://www.nuget.org/packages/Dacs7/">nuget</a> package.</p>
       </section>
 
     </div>
