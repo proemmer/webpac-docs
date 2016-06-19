@@ -80,7 +80,8 @@ to the representation we use.
 
 ##web api
 
-To visualize and test the web api we added swagger support.
+To visualize and test the web api we added swagger support. Whit this, 
+you can also generate a proxy to easily call webpac from your C# application.
 
 ![System Overview](./images/Swagger.PNG)
 
