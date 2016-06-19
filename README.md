@@ -67,8 +67,6 @@ To address a value in the PLC you have to specify the area and the type.
 | COUNT | Counter |
 
 
-
-
 ## Symbolic (symbol based access)
 
 The second access method is by its symbolic name. For this, you have to create a 
@@ -89,9 +87,10 @@ To visualize and test the web api we added swagger support.
 
 ##Configuration
 
-The configuration file named 'appsettings.json' has the configuration settings for Logging, Plc, RuntimeCompiler and the Authentication.
 
 ### Logging
+
+In this section you can configure the logging for the application. (For details have a look at [docs.asp.net](https://docs.asp.net/en/latest/fundamentals/logging.html#configuring-logging-in-your-application))
 
 ```c#
   "Logging": {
@@ -103,6 +102,25 @@ The configuration file named 'appsettings.json' has the configuration settings f
     }
   }
 ```
+
+
+### Global
+
+The *Global* section can be used to deactivate some features. (The shown settings are default)
+
+```c#
+  "Global": {
+      "UseSignalR": true,
+      "UseWebSockets": true,
+      "UseSwagger ":  true,
+      "UseLogFiles" :  true
+    }
+```
+
+*   *UseSignalR*: If false, SignalR is not activated and data change call back is not available. 
+*   *UseWebSockets*: If false, wepac do not use websockets and so it tries to find a other supported method.
+*   *UseSwagger*: If false, swagger is not activated, an so u could not use swagger ui.
+*   *UseLogFiles*: If false, no log file will be created. If true, webpac uses the nlog.config file for log file configuration.
 
 ### Plc
 
@@ -164,7 +182,10 @@ This section specifies the connection parameter to the PLC.
 *   *Users.Username*: Name of the user for sign in.
 *   *Users.Password*: Password for the specified user.
 
+##File based Logging
 
+To write to log files, webpac use [NLog](http://nlog-project.org/). 
+(For configuration details, see the webpage of the project.)
 
 ##Used Libraries
 
