@@ -7,6 +7,8 @@ Webpac is a software which offers an web-interface for accessing Step7 PLC's.
 This interface enables you to read and write to/from PLC.
 Furthermore it supports the functionality to subscribe for events if data changes.
 
+The project is hosted on github [webpac](https://github.com/proemmer/webpac)
+
 ![System Overview](./images/System.PNG)
 
 
